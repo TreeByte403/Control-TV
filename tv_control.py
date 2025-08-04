@@ -2,14 +2,8 @@ from tkinter import *
 import os
 from tkinter import messagebox
 
-def sony_tv_connect():
+def connect():
     os.system("adb connect 192.168.178.74")
-
-    app.destroy()
-    main_window()
-
-def fire_tv_connect():
-    os.system("adb connect 192.168.178.25")
 
     app.destroy()
     main_window()
@@ -141,13 +135,17 @@ app = Tk()
 
 app.title("TV control [connect]")
 app.config(bg="#1f1f1f")
-app.geometry("400x400")
+app.geometry("300x300")
 
-sony_button = Button(app, text="Sony TV", font=("Arial", 14, "bold"), command=sony_tv_connect)
-sony_button.pack(side=LEFT, padx=25)
+information_text = Label(app, bg="#1f1f1f", fg="white", font=("Arial", 14, "bold"), text="Enter the Ip of the TV")
+information_text.pack()
 
-fire_button = Button(app, text="Fire TV", font=("Arial", 14, "bold"), command=fire_tv_connect)
-fire_button.pack(side=RIGHT, padx=25)
+ip_entry = Entry(app, bg="#1f1f2f", fg="white", font=("Arial", 14, "bold"), border=5)
+ip_entry.pack(expand=True)
+
+submit_button = Button(app, bg="lime", text="submit", command=connect)
+submit_button.pack(anchor="sw")
+
+app.bind("<Return>", lambda: connect())
 
 app.mainloop()
-
