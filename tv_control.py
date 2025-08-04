@@ -53,11 +53,10 @@ def main_window():
             text_to_write = write_entry.get()
             os.system(f"adb shell input text {text_to_write}")
 
-    def delete():
-        write_entry.delete(0, END)
+        def delete():
+            write_entry.delete(0, END)
 
         write_window = Tk()
-
         write_window.config(bg="#1f1f1f")
         write_window.title("tv control [write]")
         write_window.geometry("200x200")
@@ -74,8 +73,6 @@ def main_window():
         write_window.bind("<Return>", lambda: write_text())
 
         write_window.mainloop()
-
-
 
     app = Tk()
 
