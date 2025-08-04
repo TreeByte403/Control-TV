@@ -3,7 +3,8 @@ import os
 from tkinter import messagebox
 
 def connect():
-    os.system("adb connect 192.168.178.74")
+    tv_ip = ip_entry.get()
+    os.system(f"adb connect {tv_ip}")
 
     app.destroy()
     main_window()
